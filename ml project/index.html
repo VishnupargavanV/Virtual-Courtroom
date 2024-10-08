@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Verification</title>
+</head>
+<body>
+    <h1>Signature Verification</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="file">Upload Signature Image:</label>
+        <input type="file" name="file" id="file" required><br><br>
+        <label for="true_label">True Label:</label>
+        <input type="text" name="true_label" id="true_label" required><br><br>
+        <input type="submit" value="Verify Signature">
+    </form>
+    {% if filename %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('static', filename='uploads/' ~ filename) }}" alt="Uploaded Image">
+        <h2>Result:</h2>
+        <p>Signature is genuine: {{ is_genuine }}</p>
+    {% endif %}
+</body>
+</html>
